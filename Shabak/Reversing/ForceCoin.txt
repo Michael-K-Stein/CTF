@@ -1,0 +1,30 @@
+@author orLAvr
+
+ForceCoin, an interesting name for a CTF challenge.
+What force are we talking about? a brute force.
+
+When downloading the challenge we are getting a zip file that contains a directory.
+The content of the directory is:
+ - ForceCoin.exe
+ - db.txt.enc *
+ - ForceCoinTransactionSigner.dll.enc *
+
+
+Like in each CTF we are running the .exe file to  see what happens.
+
+A window is opened and we are asked to enter a 4 digit code**.
+We can try to guess the code but unless you have sidekick abilities you probably  won't guess right.
+The 1st option comes to mind is brute forcing and enter all possible codes.
+
+The only problem is that a code that types all the optional codes into the text box and clicks enter is
+pretty slow (about 140 hours with pyautogui). So we need ot come up with a better idea.
+
+We should remember that the challenge is under the title of reversing challenges, therefore lets try to
+reverse the code. We recommend using dotPeek by JetBrains that writes a C# version of the Code. After decompiling
+the .exe file we weill start searching for interesting files in the project.
+
+Lets look on the file ForceCoin/PinForm' we can find there the function buttonCheckPin_Click() that seem interesting.
+
+
+* After a quick search in Google we can see that a .enc file is encrypted file.
+**The Shabak are scamming us' that code can include A-Z a-z 0-9 characters.
